@@ -1,0 +1,35 @@
+
+Main Function Start
+
+Single line comment found :: # Hello World
+Single line comment found :: # This program is written by Mohamed Shaban
+Print 5
+number1 >>  Value of the variable : 5
+number2 >>  Value of the variable : 10
+
+bool declaration: character
+interger declaration: number3
+double declaration: number4
+float declaration: number5
+char declaration: boolean1value of expression in ELSE: 29
+value of expression in IF: 99
+While loop 0: 100
+While loop 1: 100
+While loop 2: 100
+While loop 3: 100
+While loop 4: 100
+While loop:  100
+For loop 2: 29
+For loop 4: 29
+For loop 6: 29
+For loop 8: 29
+For loop 10: 29
+For loop 12: 29
+For loop 14: 29
+For loop 16: 29
+For loop 18: 29
+For loop:  29
+Case matched : 3
+Value of the matched case: -6
+
+Main Function End
