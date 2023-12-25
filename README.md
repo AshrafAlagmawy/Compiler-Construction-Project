@@ -3,7 +3,7 @@
 
 #### All Features: 
   - Main function
-  - `Expressions`
+  - Expressions
     - `> Greater Than`
     - `< Less Than`
     - `== Is Equal`
