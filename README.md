@@ -4,11 +4,11 @@
 #### All Features: 
   - Main function
   - Expressions
-    - > Greater Than
+    - - > Greater Than
     - < Less Than
     - == Is Equal
     - != Is Not Equal
-    - >= Greater Than or Equal
+    - - >= Greater Than or Equal
     - <= Less Than or Equal
     - || OR 
     - && And
