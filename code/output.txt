@@ -2,16 +2,23 @@
 Main Function Start
 
 Single line comment found -> # Hello World
-Single line comment found -> # This program is written by Mohamed Shaban
-Single line comment found -> # Print FunctionPrint 5
 
-Single line comment found -> # Arthimetic OperationsPrint 21
+Single line comment found -> # This program is written by Mohamed Shaban
+
+Single line comment found -> # Print Function
+Print 5
+
+Single line comment found -> # Arthimetic Operations
+Print 21
 Print 11
 
 Single line comment found -> # PRINT(5 / 0);
-Single line comment found -> # PRINT(5 % 0);Print 24
 
-Single line comment found -> # Rational OperationsPrint 1
+Single line comment found -> # PRINT(5 % 0);
+Print 24
+
+Single line comment found -> # Rational Operations
+Print 1
 Print 0
 Print 0
 Print 1
@@ -26,26 +33,31 @@ Single line comment found -> # Print Line Function with number of lines
 
 
 
-Single line comment found -> # Logical OperationsPrint 1
+
+Single line comment found -> # Logical Operations
+Print 1
 Print 1
 Print 0
 
-Single line comment found -> # Variable Declaration and Assignmentnumber1 >>  Value of the variable : 5
+Single line comment found -> # Variable Declaration and Assignment
+number1 >>  Value of the variable : 5
 Number2 >>  Value of the variable : 10
 
-interger declaration: number3
+integer declaration: number3
 double declaration: number4
 float declaration: number5
 bool declaration: flag
 char declaration: abc
-Single line comment found -> # If Else Statement it works with ==, !=, >, <, >=, <=value of expression in ELSE: 29
+Single line comment found -> # If Else Statement it works with ==, !=, >, <, >=, <=
+value of expression in ELSE: 29
 value of expression in ELSE: 99
 value of expression in IF: 15
 value of expression in IF: 3
 value of expression in IF: -150
 value of expression in ELSE: 111
 
-Single line comment found -> # If Statementvalue of expression in IF: 99
+Single line comment found -> # If Statement
+IF block doesn't meet
 
 While loop 0
 While loop 1
@@ -78,7 +90,8 @@ While loop 10
 While loop result:  500
 
 
-Single line comment found -> # For Loop with Step 2For loop 2
+Single line comment found -> # For Loop with Step 2
+For loop 2
 For loop 4
 For loop 6
 For loop 8
@@ -89,7 +102,12 @@ For loop 16
 For loop 18
 For loop result:  29
 
-Single line comment found -> # Switch Statement with Default CaseNo matching case found for value: 100
+Single line comment found -> # Switch Statement with Default Case
+
+No matching case found for value: 100
 Value of the default case: 7
+
+Case matched : 3
+Value of the matched case: -6
 
 Main Function End

@@ -803,7 +803,7 @@ YY_RULE_SETUP
 case 19:
 YY_RULE_SETUP
 #line 88 "main.l"
-{ fprintf(yyout, "\nSingle line comment found -> "); ECHO; }
+{ fprintf(yyout, "\nSingle line comment found -> "); ECHO; fprintf(yyout, "\n");}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP

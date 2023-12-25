@@ -85,13 +85,14 @@
 	extern FILE *yyin;
 	extern FILE *yyout;
 	FILE *yyError;
-	int sym[1000];
+	int sym[100];
 	SwitchCase *switchCases; // Array to store switch cases
 	int switchCasesCount = 0; // Number of switch cases
+	int defaultCaseValue = 0; // Default case value
 
 
 /* Line 189 of yacc.c  */
-#line 95 "main.tab.c"
+#line 96 "main.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -161,7 +162,7 @@ typedef int YYSTYPE;
 
 
 /* Line 264 of yacc.c  */
-#line 165 "main.tab.c"
+#line 166 "main.tab.c"
 
 #ifdef short
 # undef short
@@ -471,11 +472,11 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    38,    38,    41,    42,    44,    45,    46,    49,    54,
-      66,    78,    90,   102,   110,   118,   121,   126,   147,   156,
-     159,   160,   161,   162,   163,   166,   169,   170,   173,   174,
-     177,   186,   191,   192,   193,   194,   195,   196,   204,   212,
-     213,   214,   215,   216,   217,   218,   219,   220,   221,   222
+       0,    39,    39,    42,    43,    45,    46,    47,    50,    55,
+      67,    79,    91,   103,   111,   119,   122,   127,   148,   161,
+     164,   165,   166,   167,   168,   171,   174,   175,   178,   179,
+     182,   191,   196,   197,   198,   199,   200,   201,   209,   217,
+     218,   219,   220,   221,   222,   223,   224,   225,   226,   227
 };
 #endif
 
@@ -1497,7 +1498,7 @@ yyreduce:
         case 7:
 
 /* Line 1455 of yacc.c  */
-#line 46 "main.y"
+#line 47 "main.y"
     {
 		(yyval) = (yyvsp[(1) - (2)]);
 	;}
@@ -1506,7 +1507,7 @@ yyreduce:
   case 8:
 
 /* Line 1455 of yacc.c  */
-#line 49 "main.y"
+#line 50 "main.y"
     {
 		fprintf(yyout, " >>  Value of the variable : %d\n", (yyvsp[(3) - (4)]));
 		sym[(yyvsp[(1) - (4)])] = (yyvsp[(3) - (4)]);
@@ -1517,7 +1518,7 @@ yyreduce:
   case 9:
 
 /* Line 1455 of yacc.c  */
-#line 54 "main.y"
+#line 55 "main.y"
     {
 		int i = 0;
 		int loopExecuted = 0;
@@ -1535,7 +1536,7 @@ yyreduce:
   case 10:
 
 /* Line 1455 of yacc.c  */
-#line 66 "main.y"
+#line 67 "main.y"
     {
 		int i = 0;
 		int loopExecuted = 0;
@@ -1553,7 +1554,7 @@ yyreduce:
   case 11:
 
 /* Line 1455 of yacc.c  */
-#line 78 "main.y"
+#line 79 "main.y"
     {
 		int i = 0;
 		int loopExecuted = 0;
@@ -1571,7 +1572,7 @@ yyreduce:
   case 12:
 
 /* Line 1455 of yacc.c  */
-#line 90 "main.y"
+#line 91 "main.y"
     {
 		int i = 0;
 		int loopExecuted = 0;
@@ -1589,13 +1590,13 @@ yyreduce:
   case 13:
 
 /* Line 1455 of yacc.c  */
-#line 102 "main.y"
+#line 103 "main.y"
     {
 		if ((yyvsp[(3) - (7)])) {
 			fprintf(yyout, "value of expression in IF: %d\n", (yyvsp[(6) - (7)]));
 		}
 		else {
-			fprintf(yyout, "condition value zero in IF block\n");
+			fprintf(yyout, "IF block doesn't meet\n");
 		}
 	;}
     break;
@@ -1603,7 +1604,7 @@ yyreduce:
   case 14:
 
 /* Line 1455 of yacc.c  */
-#line 110 "main.y"
+#line 111 "main.y"
     {
 		if ((yyvsp[(3) - (11)])) {
 			fprintf(yyout, "value of expression in IF: %d\n", (yyvsp[(6) - (11)]));
@@ -1617,7 +1618,7 @@ yyreduce:
   case 15:
 
 /* Line 1455 of yacc.c  */
-#line 118 "main.y"
+#line 119 "main.y"
     {
 		fprintf(yyout, "Print %d\n", (yyvsp[(3) - (5)]));
 	;}
@@ -1626,7 +1627,7 @@ yyreduce:
   case 16:
 
 /* Line 1455 of yacc.c  */
-#line 121 "main.y"
+#line 122 "main.y"
     {
 		for (int i = 0; i < (yyvsp[(3) - (5)]); i++) {
 			fprintf(yyout, "\n");
@@ -1637,7 +1638,7 @@ yyreduce:
   case 17:
 
 /* Line 1455 of yacc.c  */
-#line 126 "main.y"
+#line 127 "main.y"
     {
 		int switchValue = (yyvsp[(3) - (7)]);
 		int matched = 0;
@@ -1646,7 +1647,7 @@ yyreduce:
 		int i;
 		for (i = 0; i < switchCasesCount; i++) {
 			if (switchCases[i].caseValue == switchValue) {
-				fprintf(yyout, "Case matched : %d\n", switchValue);
+				fprintf(yyout, "\nCase matched : %d\n", switchValue);
 				fprintf(yyout, "Value of the matched case: %d\n", switchCases[i].expressionValue);
 				matched = 1;
 				break;
@@ -1655,8 +1656,8 @@ yyreduce:
 
 		// Print default value if no matching case is found
 		if (!matched) {
-			fprintf(yyout, "No matching case found for value: %d\n", switchValue);
-			fprintf(yyout, "Value of the default case: %d\n", sym[0]); // Adjust if needed
+			fprintf(yyout, "\nNo matching case found for value: %d\n", switchValue);
+			fprintf(yyout, "Value of the default case: %d\n", defaultCaseValue); // Adjust if needed
 		}
 	;}
     break;
@@ -1664,57 +1665,61 @@ yyreduce:
   case 18:
 
 /* Line 1455 of yacc.c  */
-#line 147 "main.y"
+#line 148 "main.y"
     {
 		int i;
+		int loopExecuted = 0;
 		for (i = (yyvsp[(3) - (11)]); i < (yyvsp[(5) - (11)]); i = i + (yyvsp[(7) - (11)])) {
 			fprintf(yyout, "For loop %d\n", i);
+			loopExecuted = 1;
 		}
-		fprintf(yyout, "For loop result:  %d\n", (yyvsp[(10) - (11)]));
+		if (loopExecuted) {
+			fprintf(yyout, "For loop result:  %d\n", (yyvsp[(10) - (11)]));
+		}
 	;}
     break;
 
   case 20:
 
 /* Line 1455 of yacc.c  */
-#line 159 "main.y"
-    { fprintf(yyout, "\ninterger declaration: "); ;}
+#line 164 "main.y"
+    { fprintf(yyout, "\ninteger declaration: "); ;}
     break;
 
   case 21:
 
 /* Line 1455 of yacc.c  */
-#line 160 "main.y"
+#line 165 "main.y"
     { fprintf(yyout, "\nfloat declaration: "); ;}
     break;
 
   case 22:
 
 /* Line 1455 of yacc.c  */
-#line 161 "main.y"
+#line 166 "main.y"
     { fprintf(yyout, "\nchar declaration: "); ;}
     break;
 
   case 23:
 
 /* Line 1455 of yacc.c  */
-#line 162 "main.y"
+#line 167 "main.y"
     { fprintf(yyout, "\ndouble declaration: "); ;}
     break;
 
   case 24:
 
 /* Line 1455 of yacc.c  */
-#line 163 "main.y"
+#line 168 "main.y"
     { fprintf(yyout, "\nbool declaration: "); ;}
     break;
 
   case 30:
 
 /* Line 1455 of yacc.c  */
-#line 177 "main.y"
+#line 182 "main.y"
     {
-    if (switchCasesCount < 1000) {
+    if (switchCasesCount < 100) {
         switchCases[switchCasesCount].caseValue = (yyvsp[(2) - (5)]);
         switchCases[switchCasesCount].expressionValue = (yyvsp[(4) - (5)]);
         switchCasesCount++;
@@ -1725,51 +1730,51 @@ yyreduce:
   case 31:
 
 /* Line 1455 of yacc.c  */
-#line 186 "main.y"
+#line 191 "main.y"
     {
-    sym[0] = (yyvsp[(3) - (4)]); // Store the value in sym for the default case
+    defaultCaseValue = (yyvsp[(3) - (4)]); // Store the value in sym for the default case
 ;}
     break;
 
   case 32:
 
 /* Line 1455 of yacc.c  */
-#line 191 "main.y"
+#line 196 "main.y"
     { (yyval) = (yyvsp[(1) - (1)]); ;}
     break;
 
   case 33:
 
 /* Line 1455 of yacc.c  */
-#line 192 "main.y"
+#line 197 "main.y"
     { (yyval) = sym[(yyvsp[(1) - (1)])]; ;}
     break;
 
   case 34:
 
 /* Line 1455 of yacc.c  */
-#line 193 "main.y"
+#line 198 "main.y"
     { (yyval) = (yyvsp[(1) - (3)]) + (yyvsp[(3) - (3)]); ;}
     break;
 
   case 35:
 
 /* Line 1455 of yacc.c  */
-#line 194 "main.y"
+#line 199 "main.y"
     { (yyval) = (yyvsp[(1) - (3)]) - (yyvsp[(3) - (3)]); ;}
     break;
 
   case 36:
 
 /* Line 1455 of yacc.c  */
-#line 195 "main.y"
+#line 200 "main.y"
     { (yyval) = (yyvsp[(1) - (3)]) * (yyvsp[(3) - (3)]); ;}
     break;
 
   case 37:
 
 /* Line 1455 of yacc.c  */
-#line 196 "main.y"
+#line 201 "main.y"
     {
         if ((yyvsp[(3) - (3)]) != 0) {
             (yyval) = (yyvsp[(1) - (3)]) / (yyvsp[(3) - (3)]);
@@ -1783,7 +1788,7 @@ yyreduce:
   case 38:
 
 /* Line 1455 of yacc.c  */
-#line 204 "main.y"
+#line 209 "main.y"
     {
         if ((yyvsp[(3) - (3)]) != 0) {
             (yyval) = (yyvsp[(1) - (3)]) % (yyvsp[(3) - (3)]);
@@ -1797,84 +1802,84 @@ yyreduce:
   case 39:
 
 /* Line 1455 of yacc.c  */
-#line 212 "main.y"
+#line 217 "main.y"
     { (yyval) = pow((yyvsp[(1) - (3)]), (yyvsp[(3) - (3)])); ;}
     break;
 
   case 40:
 
 /* Line 1455 of yacc.c  */
-#line 213 "main.y"
+#line 218 "main.y"
     { (yyval) = ((yyvsp[(1) - (3)]) < (yyvsp[(3) - (3)])) ? 1 : 0; ;}
     break;
 
   case 41:
 
 /* Line 1455 of yacc.c  */
-#line 214 "main.y"
+#line 219 "main.y"
     { (yyval) = ((yyvsp[(1) - (3)]) > (yyvsp[(3) - (3)])) ? 1 : 0; ;}
     break;
 
   case 42:
 
 /* Line 1455 of yacc.c  */
-#line 215 "main.y"
+#line 220 "main.y"
     { (yyval) = ((yyvsp[(1) - (3)]) == (yyvsp[(3) - (3)])) ? 1 : 0; ;}
     break;
 
   case 43:
 
 /* Line 1455 of yacc.c  */
-#line 216 "main.y"
+#line 221 "main.y"
     { (yyval) = ((yyvsp[(1) - (3)]) != (yyvsp[(3) - (3)])) ? 1 : 0; ;}
     break;
 
   case 44:
 
 /* Line 1455 of yacc.c  */
-#line 217 "main.y"
+#line 222 "main.y"
     { (yyval) = ((yyvsp[(1) - (3)]) >= (yyvsp[(3) - (3)])) ? 1 : 0; ;}
     break;
 
   case 45:
 
 /* Line 1455 of yacc.c  */
-#line 218 "main.y"
+#line 223 "main.y"
     { (yyval) = ((yyvsp[(1) - (3)]) <= (yyvsp[(3) - (3)])) ? 1 : 0; ;}
     break;
 
   case 46:
 
 /* Line 1455 of yacc.c  */
-#line 219 "main.y"
+#line 224 "main.y"
     { (yyval) = ((yyvsp[(1) - (3)]) && (yyvsp[(3) - (3)])) ? 1 : 0; ;}
     break;
 
   case 47:
 
 /* Line 1455 of yacc.c  */
-#line 220 "main.y"
+#line 225 "main.y"
     { (yyval) = ((yyvsp[(1) - (3)]) || (yyvsp[(3) - (3)])) ? 1 : 0; ;}
     break;
 
   case 48:
 
 /* Line 1455 of yacc.c  */
-#line 221 "main.y"
+#line 226 "main.y"
     { (yyval) = !(yyvsp[(2) - (2)]); ;}
     break;
 
   case 49:
 
 /* Line 1455 of yacc.c  */
-#line 222 "main.y"
+#line 227 "main.y"
     { (yyval) = (yyvsp[(2) - (3)]); ;}
     break;
 
 
 
 /* Line 1455 of yacc.c  */
-#line 1878 "main.tab.c"
+#line 1883 "main.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -2086,7 +2091,7 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 224 "main.y"
+#line 229 "main.y"
 
 
 void yyerror(char *s) {

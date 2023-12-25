@@ -14,9 +14,10 @@
 	extern FILE *yyin;
 	extern FILE *yyout;
 	FILE *yyError;
-	int sym[1000];
+	int sym[100];
 	SwitchCase *switchCases; // Array to store switch cases
 	int switchCasesCount = 0; // Number of switch cases
+	int defaultCaseValue = 0; // Default case value
 %}
 
 /* bison declarations */
@@ -104,7 +105,7 @@ statement: ';'
 			fprintf(yyout, "value of expression in IF: %d\n", $6);
 		}
 		else {
-			fprintf(yyout, "condition value zero in IF block\n");
+			fprintf(yyout, "IF block doesn't meet\n");
 		}
 	}
 	| IF '(' expression ')' BRACKETSTART statement BRACKETEND ELSE BRACKETSTART statement BRACKETEND	{
@@ -131,7 +132,7 @@ statement: ';'
 		int i;
 		for (i = 0; i < switchCasesCount; i++) {
 			if (switchCases[i].caseValue == switchValue) {
-				fprintf(yyout, "Case matched : %d\n", switchValue);
+				fprintf(yyout, "\nCase matched : %d\n", switchValue);
 				fprintf(yyout, "Value of the matched case: %d\n", switchCases[i].expressionValue);
 				matched = 1;
 				break;
@@ -140,23 +141,27 @@ statement: ';'
 
 		// Print default value if no matching case is found
 		if (!matched) {
-			fprintf(yyout, "No matching case found for value: %d\n", switchValue);
-			fprintf(yyout, "Value of the default case: %d\n", sym[0]); // Adjust if needed
+			fprintf(yyout, "\nNo matching case found for value: %d\n", switchValue);
+			fprintf(yyout, "Value of the default case: %d\n", defaultCaseValue); // Adjust if needed
 		}
 	}
 	| FOR '(' NUM ',' NUM ',' NUM ')' BRACKETSTART statement BRACKETEND	{
 		int i;
+		int loopExecuted = 0;
 		for (i = $3; i < $5; i = i + $7) {
 			fprintf(yyout, "For loop %d\n", i);
+			loopExecuted = 1;
 		}
-		fprintf(yyout, "For loop result:  %d\n", $10);
+		if (loopExecuted) {
+			fprintf(yyout, "For loop result:  %d\n", $10);
+		}
 	}
 	;
 
 declaration: TYPE ID1
 ;
 
-TYPE: INT   	{ fprintf(yyout, "\ninterger declaration: "); }
+TYPE: INT   	{ fprintf(yyout, "\ninteger declaration: "); }
 	 | FLOAT  	{ fprintf(yyout, "\nfloat declaration: "); }
 	 | CHAR   	{ fprintf(yyout, "\nchar declaration: "); }
 	 | DOUBLE 	{ fprintf(yyout, "\ndouble declaration: "); }
@@ -175,7 +180,7 @@ casegrammer: /*empty*/
 		;
 
 casenumber: CASE NUM ':' expression ';' {
-    if (switchCasesCount < 1000) {
+    if (switchCasesCount < 100) {
         switchCases[switchCasesCount].caseValue = $2;
         switchCases[switchCasesCount].expressionValue = $4;
         switchCasesCount++;
@@ -184,7 +189,7 @@ casenumber: CASE NUM ':' expression ';' {
     ;
 
 defaultgrammer: DEFAULT ':' expression ';' {
-    sym[0] = $3; // Store the value in sym for the default case
+    defaultCaseValue = $3; // Store the value in sym for the default case
 }
     ;
 

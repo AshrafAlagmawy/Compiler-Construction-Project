@@ -85,7 +85,7 @@ NOT						[!]
 							yylval = atoi(yytext);
 							return NUM;
 						}
-{COMMENT}           	{ fprintf(yyout, "\nSingle line comment found -> "); ECHO; }
+{COMMENT}           	{ fprintf(yyout, "\nSingle line comment found -> "); ECHO; fprintf(yyout, "\n");}
 
 {SYMBOLS}    			{ yylval = yytext[0]; return *yytext; }
 
