@@ -2,15 +2,41 @@
 # This program is written by Mohamed Shaban
 
 Main() {
+	# Print Function
 	PRINT(5);
+	# Arthimetic Operations
+	PRINT((5 + 2) * 3);
+	PRINT(5 + 2 * 3);
+	# PRINT(5 / 0);
+	# PRINT(5 % 0);
+	PRINT(5 ^ 2);
+	# Rational Operations
+	PRINT(5 > 2);
+	PRINT(5 < 2);
+	PRINT(5 == 10);
+	PRINT(10 == 10);
+	PRINT(19 != 10);
+	PRINT(23 != 23);
+	PRINT(5 >= 10);
+	PRINT(10 <= 20);
+	# Print Line Function with number of lines
+	PRINTL(5);
+
+	# Logical Operations
+	PRINT(5 > 2 && 10 < 20);
+	PRINT(5 > 2 || 10 > 20);
+	PRINT(!(5 > 2));
+
+	# Variable Declaration and Assignment
 	number1 = 5;
-	number2 = 10;
-	CHAR character;
+	Number2 = 10;
 	INT number3;
 	DOUBLE number4;
 	FLOAT number5;
-	BOOL boolean1;
+	BOOLEAN flag;
+	CHAR abc;
 
+	# If Else Statement it works with ==, !=, >, <, >=, <=
 	IF(5 < 2)
 	{
 		15 - 30;
@@ -20,6 +46,52 @@ Main() {
 		20 + 9;
 	}
 
+	IF(5 <= 2)
+	{
+		15 - 30;
+	}
+	ELSE
+	{
+		90 + 9;
+	}
+
+	IF(5 > 2)
+	{
+		45 - 30;
+	}
+	ELSE
+	{
+		20 + 3;
+	}
+
+	IF(5 >= 2)
+	{
+		5 - 2;
+	}
+	ELSE
+	{
+		100 + 9;
+	}
+
+	IF(5 == 5)
+	{
+		150 - 300;
+	}
+	ELSE
+	{
+		220 + 91;
+	}
+
+	IF(5 != 5)
+	{
+		17 - 30;
+	}
+	ELSE
+	{
+		20 + 91;
+	}
+
+	# If Statement
 	IF(13 < 28)
 	{
 		100 - 1;
@@ -27,15 +99,37 @@ Main() {
 
 	WHILE (0 < 5)
 	{
-		99 + 1;
+		199 + 1;
 	}
 
+	WHILE (0 <= 5)
+	{
+		299 + 1;
+	}
+
+	WHILE (15 > 10)
+	{
+		399 + 1;
+	}
+
+	WHILE (15 >= 10)
+	{
+		499 + 1;
+	}
+
+	WHILE (10 >= 15)
+	{
+		499 + 1;
+	}
+
+	# For Loop with Step 2
 	FOR (2, 20, 2)
 	{
 		23 + 6;
 	}
 
-	SWITCH (3)
+	# Switch Statement with Default Case
+	SWITCH (100)
 	{
 		CASE 1 : 10 + 20;
 
